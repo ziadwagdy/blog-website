@@ -15,6 +15,7 @@ function validate(e) {
   if (ContentValid && AuthorValid && TitleValid) { 
     // todo : submit
     console.log(formData);
+    window.location.assign("./list-blogs.html");
   }
   // form.classList.add('was-validated');
   // todo : check form but it skips white spaces !
