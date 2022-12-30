@@ -62,12 +62,12 @@ function isAuthorValid() {
 
 
 function showValid(node) {
-  // node.parentElement.querySelector(".invalid-feedback").style.display = "none";
-  // node.parentElement.querySelector(".valid-feedback").style.display = "block";
+  node.parentElement.querySelector(".invalid-feedback").style.display = "none";
+  node.parentElement.querySelector(".valid-feedback").style.display = "block";
 }
 
 
 function showInvalid(node) {
-  // node.parentElement.querySelector(".invalid-feedback").style.display = "block";
-  // node.parentElement.querySelector(".valid-feedback").style.display = "none";
+  node.parentElement.querySelector(".invalid-feedback").style.display = "block";
+  node.parentElement.querySelector(".valid-feedback").style.display = "none";
 }
