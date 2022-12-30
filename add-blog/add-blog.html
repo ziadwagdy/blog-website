@@ -20,8 +20,8 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="mt-4 col d-flex justify-content-center">
+      <div class="row ">
+        <div class="mt-4 col">
           <h1>Add Blog Page</h1>
         </div>
       </div>
@@ -29,26 +29,47 @@
       <div class="row">
         <form class="row g-3 needs-validation add-blog-form" novalidate onsubmit="validate(event)">
           <div class="row">
-            <div class="col-md-4">
-              <label for="validationCustom01" class="form-label"
-                >Blog Title</label
-              >
+            <div class="col-md-6">
+              <label for="title" class="form-label h4">Blog Title</label>
               <input
                 type="text"
                 class="form-control"
                 id="title"
                 name="title"
                 required
+                minlength="3"
               />
-              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">
+                Invalid title
+              </div>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+
+
+            <div class="col-md-4">
+              <label for="authorName" class="form-label h4">Author name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="authorName"
+                name="authorName"
+                required
+                minlength="5"
+              />
+              <div class="invalid-feedback">
+                Invalid Author name, name was empty or les than 5 characters. 
+              </div>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
             </div>
           </div>
 
           <div class="row mt-4">
-            <div class="col-md-9">
-              <label for="content" class="form-label"
-                >Blog Content</label
-              >
+            <div class="col-md-10">
+              <label for="content" class="form-label h4">Blog Content</label>
               <textarea
                 class="form-control"
                 id="content"
@@ -58,40 +79,16 @@
                 required
               ></textarea>
               <div class="invalid-feedback">
-                Please provide a valid description.
+                Invalid content, content was too short or empty
+              </div>
+              <div class="valid-feedback">
+                Looks good!
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <!--Image-->
-            <div class="mt-4">
-              <label class="form-label">Blog Image</label>
-              <div class="mb-4 d-flex">
-                <img
-                  src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
-                  alt="example placeholder"
-                  style="width: 300px"
-                />
-              </div>
-              <div class="d-flex">
-                <div class="btn btn-primary btn-rounded">
-                  <label class="form-label text-white m-1" for="image"
-                    >Choose file</label
-                  >
-                  <input
-                    type="file"
-                    class="form-control d-none"
-                    id="image"
-                    name="image"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-12 d-flex justify-content-center">
+          <div class="col-12 d-flex">
             <button class="btn btn-success" type="submit">Add Blog</button>
           </div>
         </form>

@@ -1,56 +1,73 @@
+const form = document.querySelector("form");
+
+const titleInput = document.getElementById("title");
+const contentInput = document.getElementById("content");
+const authorNameInput = document.getElementById("authorName");
+
+let formData = {};
+
 function validate(e) {
   e.preventDefault();
 
-  let errorMessages = {};
-  let formData = {};
+  let ContentValid = isContentValid(); 
+  let AuthorValid = isAuthorValid(); 
+  let TitleValid  = isTitleValid(); 
+  if (ContentValid && AuthorValid && TitleValid) { 
+    // todo : submit
+    console.log(formData);
+  }
+  // form.classList.add('was-validated');
+  // todo : check form but it skips white spaces !
 
-  const title = document.getElementById("title").value;
-  const content = document.getElementById("content").value;
-  const imageInp = document.getElementById("image");
-  const imageUrl = imageInp.value;
+}
 
+
+function isTitleValid() {
+  const title = titleInput.value;
   if (title !== "" && title.trim().length >= 3) {
     formData["title"] = title;
+    showValid(titleInput);
+    return true;
   } else {
-    errorMessages["titleError"] = "Not a valid Title!";
+    showInvalid(titleInput);
+    return false;
   }
+}
 
+
+function isContentValid() {
+  const content = contentInput.value;
   if (content !== "" && content.trim().length >= 15) {
     formData["content"] = content;
+    showValid(contentInput);
+    return true;
   } else {
-    errorMessages["contentError"] = "Not a valid Content!";
-  }
-
-  if (checkURL(imageUrl)) {
-    formData["imageUrl"] = imageUrl;
-  } else {
-    errorMessages["imageError"] = "Not a valid Image url!";
-  }
-
-  if (JSON.stringify(errorMessages) === "{}") {
-    console.log(`No error found data is ${JSON.stringify(formData)}`);
-    // submit data .addnew 
-    if(submit){
-      // go to list page 
-      // todo : get all data in list page 
-    } 
-  } else {
-    console.log(`Errors found: ${JSON.stringify(errorMessages)}`);
-    // show errors
+    showInvalid(contentInput);
+    return false;
   }
 }
 
-function checkURL(url) {
-  return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+
+function isAuthorValid() {
+  const authorName = authorNameInput.value;
+  if (authorName !== "" && authorName.trim().length >= 5) {
+    formData["authorName"] = authorName;
+    showValid(authorNameInput);
+    return true;
+  } else {
+    showInvalid(authorNameInput);
+    return false;
+  }
 }
 
-const imageInp = document.getElementById("image");
 
-imageInp.onchange = (evt) => {
-  if (checkURL(imageInp.files[0].name)) {
-    const [file] = imageInp.files;
-    if (file) {
-      document.querySelector("img").src = URL.createObjectURL(file);
-    }
-  }
-};
+function showValid(node) {
+  // node.parentElement.querySelector(".invalid-feedback").style.display = "none";
+  // node.parentElement.querySelector(".valid-feedback").style.display = "block";
+}
+
+
+function showInvalid(node) {
+  // node.parentElement.querySelector(".invalid-feedback").style.display = "block";
+  // node.parentElement.querySelector(".valid-feedback").style.display = "none";
+}
