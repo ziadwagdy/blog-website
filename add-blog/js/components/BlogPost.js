@@ -37,6 +37,11 @@ export default function createBlog(formData) {
     deleteButton.innerText = "Delete Blog";
 
     manageBlog.appendChild(deleteButton);
+
+    deleteButton.addEventListener("click", () => {
+        deleteBlog(formData["id"]); 
+    });
+
     manageBlog.appendChild(editButton);
 
 
@@ -47,4 +52,10 @@ export default function createBlog(formData) {
     card.appendChild(cardBody);
     column.appendChild(card);
     blogs.appendChild(column);
+}
+
+
+function deleteBlog(key) {
+    sessionStorage.removeItem(key);
+    window.location.reload();
 }

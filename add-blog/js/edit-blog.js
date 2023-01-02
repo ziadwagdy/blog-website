@@ -9,7 +9,7 @@ const authorNameInput = document.getElementById("authorName");
 
 const id = document.querySelector("#id");
 function intilizeForm() {
-    
+    // todo :call 
     const formData = JSON.parse(sessionStorage.getItem("1"));
     console.log(formData);
     titleInput.value = formData["title"]; 
@@ -35,7 +35,6 @@ function validate(e) {
         sessionStorage.setItem(formData["id"], JSON.stringify(formData));
         window.location.assign("./list-blogs.html");
     }
-    // form.classList.add('was-validated');
     // todo : check form but it skips white spaces !
 
 }

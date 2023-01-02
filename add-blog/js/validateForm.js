@@ -11,7 +11,7 @@ export default function validateForm(titleInput, contentInput, authorNameInput, 
         return null;
     }
 }
-
+// todo change the  @param to values 
 function isTitleValid(titleInput) {
     const title = titleInput.value;
     if (title !== "" && title.trim().length >= 3) {
