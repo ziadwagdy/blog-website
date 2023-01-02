@@ -2,7 +2,7 @@ export default function createBlog(formData) {
     const blogs = document.querySelector(".blogs");
 
     const column = document.createElement("div");
-    column.className = "col-sm-6";
+    column.className = "row mb-4";
 
     const card = document.createElement("div");
     card.className = "card";
@@ -18,13 +18,32 @@ export default function createBlog(formData) {
     cardText.className = "card-text";
     cardText.innerText = formData["content"]
 
-    const blogAuthor = document.createElement("div"); 
-    blogAuthor.className = "btn btn-primary"; 
-    blogAuthor.innerText = `Author : ${formData["authorName"]}`; 
+    const blogAuthor = document.createElement("div");
+    blogAuthor.className = "btn btn-primary";
+    blogAuthor.innerText = `Author : ${formData["authorName"]}`;
+
+
+    const manageBlog = document.createElement("div");
+    manageBlog.className = "row mt-4 d-flex flex-row-reverse";
+
+    const editButton = document.createElement("a");
+    editButton.href = "./edit-blog.html";
+    editButton.className = "btn btn-success m-2 col-md-2";
+    editButton.innerText = "Edit Blog";
+
+
+    const deleteButton = document.createElement("a");
+    deleteButton.className = "btn btn-danger deleteBtn m-2 col-md-2";
+    deleteButton.innerText = "Delete Blog";
+
+    manageBlog.appendChild(deleteButton);
+    manageBlog.appendChild(editButton);
+
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
-    cardBody.appendChild(blogAuthor); 
+    cardBody.appendChild(blogAuthor);
+    cardBody.appendChild(manageBlog); 
     card.appendChild(cardBody);
     column.appendChild(card);
     blogs.appendChild(column);
